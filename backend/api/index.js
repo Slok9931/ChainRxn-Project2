@@ -1,10 +1,9 @@
+import { createServer } from '@vercel/node';
 import express from 'express';
-import Chain from './blockchain/Chain.js';
+import Chain from '../blockchain/Chain.js';
 import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 3005;
-
 app.use(cors());
 app.use(express.json());
 
@@ -16,11 +15,9 @@ app.get('/', (req, res) => {
 
 app.post('/addTransaction', (req, res) => {
     const { sender, recipient, amount } = req.body;
-
     if (!sender || !recipient || amount === undefined) {
         return res.status(400).json({ error: "Transaction must include sender, recipient, and amount." });
     }
-
     const transaction = { sender, recipient, amount };
     chain.addTransaction(transaction);
     res.status(200).json({ message: "Transaction added to the mempool", transaction });
@@ -53,6 +50,5 @@ app.get('/block/:hash', (req, res) => {
   return block ? res.json(block) : res.status(404).json({error: 'Block not found'});
 });
 
-app.listen(port, () => {
-    console.log(`🚀 Blockchain API running on port ${port}`);
-});
+// Export the handler for Vercel
+export default createServer(app);
