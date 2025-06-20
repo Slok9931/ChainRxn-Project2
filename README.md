@@ -1,90 +1,161 @@
-# ChainConnect - Interact with the Blockchain
 
-Welcome to **Project 2**! In this challenge, you will implement a very simple blockchain and make it interactive by building a frontend using React.
+# ChainView - Blockchain Explorer & Management Platform
 
-## 🚀 How to Participate
+A comprehensive blockchain visualization and management platform built with React and Node.js. This application provides an intuitive interface to interact with a custom blockchain implementation, offering real-time monitoring, transaction management, and mining capabilities.
 
-1. **Fork the repository**
+## 🌟 Features
 
-2. **Clone your forked repository**
+### Core Blockchain Functionality
+- **Complete Blockchain Network**: Implements a full blockchain with linked blocks and hash verification
+- **Transaction Management**: Add, view, and track transactions in the mempool
+- **Mining Interface**: Mine pending transactions into new blocks with proof-of-work
+- **Chain Validation**: Verify blockchain integrity and detect tampering
+- **Real-time Updates**: Live data refresh every 5 seconds
 
-3. **Complete the backend**
+### Frontend Capabilities
+- **Dashboard**: Overview of blockchain statistics and recent activity
+- **Explorer**: Complete blockchain visualization with block and transaction details
+- **Transaction Manager**: Create and submit new transactions
+- **Mining Interface**: Interactive mining with real-time feedback
+- **Block Search**: Find specific blocks by hash
+- **Validation Tools**: Check blockchain integrity and individual block validity
 
-   * Navigate to the backend directory:
+## 🚀 Getting Started
 
-     ```bash
-     cd backend
-     ```
-   * Fill in the `TODO` comments in the files. The guiding structure is already in place.
-   * Run the backend and ensure it functions as expected.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-4. **Complete the frontend**
+### Backend Setup
 
-   * Navigate to the frontend directory:
+1. **Navigate to the backend directory and install dependencies**:
+   ```bash
+   cd backend
+   npm install
+   ```
 
-     ```bash
-     cd frontend
-     ```
-   * Implement the missing logic in the `TODO` comments.
-   * Make API calls to your running backend.
+2. **Start the blockchain server**:
+   ```bash
+   npm start
+   ```
+   The API will be running on `http://localhost:3005`
 
-### 🎯 Bonus
+### Frontend Setup
 
-You are encouraged to:
+1. **Navigate to frontend**
+   ```bash
+   cd frontend
+   ```
+   
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-* Revamp the architecture or design if you have a better idea.
-* Build other simple apps that use the blockchain backend.
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`
 
-> **Note:** The goal here is not to build a full-featured blockchain, but to help you understand its core functioning. In **Project 3**, we will interact with a live Bitcoin node.
+## 🔧 API Endpoints
 
-### ✅ Minimum Required Features
+### Transaction Management
+- **POST** `/addTransaction` - Add a new transaction to mempool
+- **POST** `/mine` - Mine pending transactions into a new block
 
+### Blockchain Data
+- **GET** `/getChain` - Retrieve the complete blockchain
+- **GET** `/getLatestBlock` - Get the most recent block
+- **GET** `/block/:hash` - Find a specific block by hash
 
-* **Blockchain Network**: Core structure with blocks linked by hashes to ensure integrity.
-* **OOP Design**: Uses object-oriented principles with `Block` and `Chain` classes.
-* **Immutability**: Data in a block can't be changed; every block depends on the previous one.
-* **SHA256 Hashing**: Ensures data integrity and tamper-proof blocks.
-* **API-Driven Backend**:
+### Utilities
+- **GET** `/isValid` - Validate blockchain integrity
+- **GET** `/stats` - Get blockchain statistics
+- **GET** `/` - API health check
 
-  * Add a new block
-  * View the entire chain
-  * Fetch the latest block
-* **React Frontend**: UI to interact with the blockchain through APIs.
+## 🏗️ Tech Stack
 
-> **See demo of a working solution here (for reference): https://drive.google.com/drive/folders/1rQp67A0Td-JShIDmIupQMBQzSy5IrQRV?usp=drive_link**
+### Frontend
+- **React 18** with TypeScript
+- **Vite** for development and building
+- **Tailwind CSS** for styling
+- **Shadcn/ui** component library
+- **React Router** for navigation
+- **TanStack Query** for data fetching
+- **Lucide React** for icons
 
+### Backend
+- **Node.js** with Express
+- **Custom Blockchain Implementation** with SHA256 hashing
+- **CORS** enabled for cross-origin requests
+- **Object-Oriented Design** with Block and Chain classes
 
-## 🧪 API Endpoints
+## 📱 Pages & Navigation
 
-### POST `/addBlock`
+- **Dashboard** (`/`) - Blockchain overview and statistics
+- **Explorer** (`/explorer`) - Complete chain visualization
+- **Transactions** (`/transactions`) - Transaction management
+- **Mining** (`/mining`) - Interactive mining interface
+- **Block Search** (`/blocks`) - Search blocks by hash
+- **Validation** (`/validation`) - Blockchain integrity tools
 
-Adds a new block.
+## 🎨 Design Features
 
-* **Request Body**:
+- **Dark Theme** with gradient backgrounds
+- **Responsive Design** for mobile and desktop
+- **Real-time Data Updates** with loading states
+- **Interactive Components** with hover effects
+- **Error Handling** with user-friendly messages
+- **Professional UI** with modern card layouts
 
-  ```json
-  { "data": "Your data here" }
-  ```
-* **Response**: `200 OK` with the newly created block.
+## 🔒 Blockchain Implementation
 
-### GET `/getChain`
+### Block Structure
+```javascript
+{
+  index: number,
+  timestamp: number,
+  transactions: Array,
+  previousHash: string,
+  hash: string,
+  nonce: number
+}
+```
 
-Returns the full blockchain.
+### Security Features
+- **SHA256 Hashing** for block integrity
+- **Proof of Work** mining algorithm
+- **Chain Validation** to prevent tampering
+- **Immutable Blocks** once added to chain
 
-* **Response**: JSON array of all blocks.
+## 🚀 Deployment
 
-### GET `/getLatestBlock`
+The application can be deployed using any modern hosting platform:
 
-Returns the most recent block.
+1. **Build the frontend**:
+   ```bash
+   npm run build
+   ```
 
-* **Response**: JSON object with latest block data.
+2. **Deploy the backend** to your preferred Node.js hosting service
 
-Submit your responses here: https://forms.gle/w4Y1Mf6QdEFhDJ2p7
+3. **Update API endpoints** in the frontend to point to your deployed backend
 
-Deadline for submission: **5th July' 25**
+## 🤝 Contributing
 
->**BONUS** marks will be awarded for any kind of unique thinking or cool side application related to the core concept of this project.
+This project demonstrates blockchain fundamentals and modern web development practices. Feel free to:
+
+- Enhance the UI/UX design
+- Add new blockchain features
+- Implement additional validation methods
+- Create new visualization components
+- Optimize performance and security
+
+## 📄 License
+
+This project is open source and available under the MIT License.
 
 ---
 
-#### - **BIB** (Blockchain at IIT Bhilai)  
+**ChainView** - Making blockchain technology accessible and visual 🔗✨
