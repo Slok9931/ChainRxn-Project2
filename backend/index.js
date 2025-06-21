@@ -1,4 +1,3 @@
-import { createServer } from '@vercel/node';
 import express from 'express';
 import Chain from './blockchain/Chain.js';
 import cors from 'cors';
@@ -50,5 +49,7 @@ app.get('/block/:hash', (req, res) => {
   return block ? res.json(block) : res.status(404).json({error: 'Block not found'});
 });
 
-// Export the handler for Vercel
-export default createServer(app);
+const PORT = process.env.PORT || 3005;
+app.listen(PORT, () => {
+    console.log(`Blockchain API is running on port ${PORT}`);
+});
