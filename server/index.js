@@ -3,13 +3,7 @@ import Chain from './blockchain/Chain.js';
 import cors from 'cors';
 
 const app = express();
-app.use(cors(
-    {
-        origin: ["https://chain-rxn-project2-39j2-ten.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
+app.use(cors());
 app.use(express.json());
 
 let chain = new Chain();
