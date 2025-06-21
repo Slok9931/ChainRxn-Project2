@@ -5,7 +5,7 @@ import cors from 'cors';
 const app = express();
 app.use(cors(
     {
-        origin: ["http://chain-rxn-project2-jaex.vercel.app"],
+        origin: ["https://chain-rxn-project2-39j2-ten.vercel.app"],
         methods: ["POST", "GET"],
         credentials: true
     }
